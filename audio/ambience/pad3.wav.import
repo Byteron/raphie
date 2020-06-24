@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pad3.wav-f83bc6b6649c91ab6877ec817370a40f.sample"
+
+[deps]
+
+source_file="res://audio/ambience/pad3.wav"
+dest_files=[ "res://.import/pad3.wav-f83bc6b6649c91ab6877ec817370a40f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

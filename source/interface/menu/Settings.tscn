@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://graphics/themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://source/interface/menu/Settings.gd" type="Script" id=2]
+[ext_resource path="res://graphics/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://source/interface/menu/VolumeSelector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://source/interface/menu/MenuButton.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+extra_spacing_char = 10
+font_data = ExtResource( 3 )
+
+[node name="Settings" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 230.0
+margin_top = 94.0
+margin_right = 409.0
+margin_bottom = 266.0
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 179.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+align = 1
+valign = 1
+
+[node name="Sound" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 179.0
+margin_bottom = 126.0
+custom_constants/separation = 8
+
+[node name="Master" parent="CenterContainer/VBoxContainer/Sound" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 179.0
+margin_bottom = 20.0
+focus_neighbour_bottom = NodePath("../Music")
+grab_focus = true
+title = "Master"
+
+[node name="Music" parent="CenterContainer/VBoxContainer/Sound" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 28.0
+margin_right = 179.0
+margin_bottom = 48.0
+focus_neighbour_top = NodePath("../Master")
+focus_neighbour_bottom = NodePath("../Effects")
+bus = 1
+
+[node name="Effects" parent="CenterContainer/VBoxContainer/Sound" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 56.0
+margin_right = 179.0
+margin_bottom = 76.0
+focus_neighbour_top = NodePath("../Music")
+focus_neighbour_bottom = NodePath("../../Back")
+bus = 2
+title = "Effects"
+
+[node name="Back" parent="CenterContainer/VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 146.0
+margin_right = 179.0
+margin_bottom = 172.0
+text = "Quit"
+[connection signal="volume_changed" from="CenterContainer/VBoxContainer/Sound/Master" to="." method="_on_Master_volume_changed"]
+[connection signal="volume_changed" from="CenterContainer/VBoxContainer/Sound/Music" to="." method="_on_Music_volume_changed"]
+[connection signal="volume_changed" from="CenterContainer/VBoxContainer/Sound/Effects" to="." method="_on_Effects_volume_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]

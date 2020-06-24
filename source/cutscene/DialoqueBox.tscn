@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://graphics/themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://source/cutscene/DialoqueBox.gd" type="Script" id=2]
+
+[node name="DialoqueBox" type="Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+rect_min_size = Vector2( 0, 60 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Speaker" type="Label" parent="."]
+margin_left = 4.0
+margin_top = -20.0
+margin_right = 636.0
+margin_bottom = -4.0
+text = "Name of Speaker"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 638.0
+margin_bottom = 58.0
+
+[node name="Text" type="Label" parent="MarginContainer/Panel"]
+margin_top = 20.0
+margin_right = 636.0
+margin_bottom = 36.0
+text = "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+autowrap = true
+percent_visible = -0.0144928

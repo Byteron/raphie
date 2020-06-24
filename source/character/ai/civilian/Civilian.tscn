@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://source/character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/character/ai/civilian/Civilian.gd" type="Script" id=2]
+[ext_resource path="res://source/character/ai/civilian/states/Idle.gd" type="Script" id=3]
+[ext_resource path="res://addons/finite_state_machine/icons/state.png" type="Texture" id=4]
+[ext_resource path="res://source/character/ai/civilian/states/Walk.gd" type="Script" id=5]
+
+[node name="Civilian" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Idle" type="Node" parent="FiniteStateMachine" index="1"]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Idle" index="0"]
+one_shot = true
+
+[node name="Walk" type="Node" parent="FiniteStateMachine" index="2"]
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}

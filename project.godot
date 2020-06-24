@@ -1,0 +1,298 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Boss",
+"class": "Android",
+"language": "GDScript",
+"path": "res://source/character/ai/boss/android/Android.gd"
+}, {
+"base": "Character",
+"class": "Boss",
+"language": "GDScript",
+"path": "res://source/character/ai/boss/Boss.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://source/character/Character.gd"
+}, {
+"base": "Character",
+"class": "Civilian",
+"language": "GDScript",
+"path": "res://source/character/ai/civilian/Civilian.gd"
+}, {
+"base": "Boss",
+"class": "Clasher",
+"language": "GDScript",
+"path": "res://source/character/ai/boss/clasher/Clasher.gd"
+}, {
+"base": "Event",
+"class": "Cutscene",
+"language": "GDScript",
+"path": "res://source/cutscene/Cutscene.gd"
+}, {
+"base": "Character",
+"class": "Drone",
+"language": "GDScript",
+"path": "res://source/character/ai/drone/Drone.gd"
+}, {
+"base": "Node2D",
+"class": "Event",
+"language": "GDScript",
+"path": "res://source/cutscene/Event.gd"
+}, {
+"base": "Node",
+"class": "FiniteStateMachine",
+"language": "GDScript",
+"path": "res://addons/finite_state_machine/source/FiniteStateMachine.gd"
+}, {
+"base": "Camera2D",
+"class": "GameCam",
+"language": "GDScript",
+"path": "res://source/camera/GameCam.gd"
+}, {
+"base": "Patrol",
+"class": "Glitcher",
+"language": "GDScript",
+"path": "res://source/character/ai/glitcher/Glitcher.gd"
+}, {
+"base": "CanvasLayer",
+"class": "Interface",
+"language": "GDScript",
+"path": "res://source/interface/hud/Interface.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://source/level/Level.gd"
+}, {
+"base": "Node",
+"class": "ParticleSpawner",
+"language": "GDScript",
+"path": "res://source/particles/ParticleSpawner.gd"
+}, {
+"base": "Character",
+"class": "Patrol",
+"language": "GDScript",
+"path": "res://source/character/ai/patrol/Patrol.gd"
+}, {
+"base": "Character",
+"class": "Player",
+"language": "GDScript",
+"path": "res://source/character/player/Player.gd"
+}, {
+"base": "Node2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://source/projectiles/Projectile.gd"
+}, {
+"base": "Resource",
+"class": "RSpeech",
+"language": "GDScript",
+"path": "res://source/resources/RSpeech.gd"
+}, {
+"base": "Resource",
+"class": "SaveGame",
+"language": "GDScript",
+"path": "res://source/resources/SaveGame.gd"
+}, {
+"base": "Node",
+"class": "SceneLoader",
+"language": "GDScript",
+"path": "res://source/tools/SceneLoader.gd"
+}, {
+"base": "Node",
+"class": "ScreenShake",
+"language": "GDScript",
+"path": "res://source/camera/ScreenShake.gd"
+}, {
+"base": "Control",
+"class": "Speech",
+"language": "GDScript",
+"path": "res://source/cutscene/Speech.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://addons/finite_state_machine/source/State.gd"
+}, {
+"base": "Character",
+"class": "Turret",
+"language": "GDScript",
+"path": "res://source/character/ai/turret/Turret.gd"
+} ]
+_global_script_class_icons={
+"Android": "",
+"Boss": "",
+"Character": "",
+"Civilian": "",
+"Clasher": "",
+"Cutscene": "res://graphics/images/icons/cutscene.png",
+"Drone": "",
+"Event": "res://graphics/images/icons/event.png",
+"FiniteStateMachine": "",
+"GameCam": "",
+"Glitcher": "",
+"Interface": "",
+"Level": "",
+"ParticleSpawner": "",
+"Patrol": "",
+"Player": "",
+"Projectile": "",
+"RSpeech": "",
+"SaveGame": "",
+"SceneLoader": "",
+"ScreenShake": "",
+"Speech": "",
+"State": "",
+"Turret": ""
+}
+
+[application]
+
+config/name="Raphie"
+run/main_scene="res://source/interface/menu/TitleScreen.tscn"
+boot_splash/image="res://graphics/images/splash/wallpaper.png"
+config/icon="res://graphics/images/characters/avatar.png"
+config//version="1.1.0"
+
+[autoload]
+
+Scene="*res://source/global/Scene.tscn"
+Audio="*res://source/global/Audio.tscn"
+Global="*res://source/global/Global.gd"
+Instance="*res://source/global/Instance.gd"
+Glitch="*res://source/global/Glitch.tscn"
+GameSaver="*res://source/global/GameSaver.gd"
+Controller="*res://source/global/Controller.gd"
+
+[debug]
+
+gdscript/warnings/enable=false
+
+[display]
+
+window/size/width=640
+window/size/height=360
+window/size/test_width=1280
+window/size/test_height=720
+window/dpi/allow_hidpi=true
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "audio_booth", "finite_state_machine" )
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+ ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+special={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+dash={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":86,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":66,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_start={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Terrain"
+2d_physics/layer_3="Characters"
+2d_physics/layer_4="Projectiles"
+
+[rendering]
+
+quality/2d/gles2_use_nvidia_rect_flicker_workaround=true
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+quality/2d/use_pixel_snap=true
+quality/dynamic_fonts/use_oversampling=false

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/level1BaseLoop.wav-36ea4730fc72e508a38f4d29cebf5f63.sample"
+
+[deps]
+
+source_file="res://audio/music/level1BaseLoop.wav"
+dest_files=[ "res://.import/level1BaseLoop.wav-36ea4730fc72e508a38f4d29cebf5f63.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

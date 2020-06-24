@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://graphics/images/misc/displacement.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D mask : hint_albedo;
+uniform float offset : hint_range(0.0, 0.01);
+uniform float abberation : hint_range(0.0, 0.01);
+
+void fragment() {
+	
+	vec4 disp = texture(mask, SCREEN_UV);
+	vec2 uv = SCREEN_UV;
+	
+	if (disp.r == 1.0) {
+		uv.x += offset;
+	} else {
+		uv.x -= offset;
+	}
+	
+	COLOR.r = texture(SCREEN_TEXTURE, uv + abberation).r;
+	COLOR.g = texture(SCREEN_TEXTURE, uv).g;
+	COLOR.b = texture(SCREEN_TEXTURE, uv - abberation).b;
+	COLOR.a = texture(SCREEN_TEXTURE, uv).a;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/offset = 0.0
+shader_param/abberation = null
+shader_param/mask = ExtResource( 1 )

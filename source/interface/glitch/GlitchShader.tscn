@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://graphics/materials/glitch.tres" type="Material" id=1]
+[ext_resource path="res://graphics/images/interface/white.png" type="Texture" id=2]
+[ext_resource path="res://source/interface/glitch/GlitchShader.gd" type="Script" id=3]
+
+[node name="GlitchShader" type="NinePatchRect"]
+pause_mode = 2
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+wait_time_from = 4.0
+wait_time_to = 7.0
+
+[node name="Wait" type="Timer" parent="."]
+one_shot = true
+
+[node name="Glitch" type="Timer" parent="."]
+one_shot = true
+
+[node name="Mask" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Abberation" type="Timer" parent="."]
+wait_time = 0.4
+[connection signal="timeout" from="Wait" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Glitch" to="." method="_on_Glitch_timeout"]
+[connection signal="timeout" from="Mask" to="." method="_on_Mask_timeout"]
+[connection signal="timeout" from="Abberation" to="." method="_on_Abberation_timeout"]

@@ -1,0 +1,324 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://source/character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/character/ai/turret/Turret.gd" type="Script" id=2]
+[ext_resource path="res://audio/sfx/droneDie.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/sfx/machineGun.wav" type="AudioStream" id=4]
+[ext_resource path="res://graphics/images/objects/turret-gatling.png" type="Texture" id=5]
+[ext_resource path="res://source/character/ai/turret/states/Die.gd" type="Script" id=6]
+[ext_resource path="res://source/character/ai/turret/states/Idle.gd" type="Script" id=7]
+[ext_resource path="res://addons/finite_state_machine/icons/state.png" type="Texture" id=8]
+[ext_resource path="res://source/character/ai/turret/states/Shoot.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "activate"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Lower/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Lower/Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.0101669 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Lower/Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.0101669 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.301961 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Lower/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27, 28, 29, 30, 31 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.7 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -4.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Lower/Sprite:vframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.0148583 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Lower/Sprite:hframes")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.0148583 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "shoot"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Lower/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+}, {
+"args": [  ],
+"method": "shoot"
+}, {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:stream")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Lower/Sprite:vframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.0148583 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Lower/Sprite:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.0148583 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 12 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 14, 4 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[node name="Turret" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+flip_on_start = false
+team_number = 1
+max_health = 100
+vision = 300
+max_shots = 1
+bullet_speed = 600
+bullet_damage = 12
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="0"]
+stream = ExtResource( 3 )
+volume_db = -4.0
+pitch_scale = 0.7
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/activate = SubResource( 1 )
+anims/die = SubResource( 2 )
+anims/shoot = SubResource( 3 )
+
+[node name="Sprite" parent="Lower" index="1"]
+texture = ExtResource( 5 )
+offset = Vector2( 0, -11 )
+vframes = 4
+hframes = 12
+
+[node name="Upper" parent="." index="5"]
+visible = false
+
+[node name="Die" parent="FiniteStateMachine" index="0"]
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Die" index="0"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Idle" type="Node" parent="FiniteStateMachine" index="1"]
+script = ExtResource( 7 )
+__meta__ = {
+"_editor_icon": ExtResource( 8 )
+}
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Idle" index="0"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Shoot" type="Node" parent="FiniteStateMachine" index="2"]
+script = ExtResource( 9 )
+__meta__ = {
+"_editor_icon": ExtResource( 8 )
+}
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Shoot" index="0"]
+wait_time = 0.3
+one_shot = true
+
+[node name="CollisionShape2D" parent="." index="7"]
+position = Vector2( -1, -4 )
+shape = SubResource( 4 )
+
+[node name="Barrel" type="Position2D" parent="." index="8"]
+position = Vector2( -18, -17 )
+
+[node name="HitArea" parent="." index="9"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="HitArea" index="0"]
+position = Vector2( 0, 9 )
+shape = SubResource( 5 )
+disabled = true

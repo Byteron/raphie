@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/checkpointReached.wav-e9f97594a75f633b2c125ec84954a78c.sample"
+
+[deps]
+
+source_file="res://audio/sfx/checkpointReached.wav"
+dest_files=[ "res://.import/checkpointReached.wav-e9f97594a75f633b2c125ec84954a78c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

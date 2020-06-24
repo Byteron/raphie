@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://graphics/shaders/glitch.tres" type="Shader" id=1]
+[ext_resource path="res://graphics/images/misc/displacement.png" type="Texture" id=2]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/offset = 0.0
+shader_param/abberation = null
+shader_param/mask = ExtResource( 2 )

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://graphics/images/objects/crates.png" type="Texture" id=1]
+[ext_resource path="res://source/objects/Scientist.gd" type="Script" id=2]
+
+[node name="Crate" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 3
+script = ExtResource( 2 )

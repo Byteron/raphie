@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://source/resources/RSpeech.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+speaker = "Game Devs"
+lines = [ "That's....", "That's it. You played all there is. No time, no levels.
+Apologies.", "Thank you for playing.", "Good Bye." ]

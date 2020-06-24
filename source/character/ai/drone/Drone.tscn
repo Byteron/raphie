@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://source/character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/character/ai/drone/Drone.gd" type="Script" id=2]
+[ext_resource path="res://audio/sfx/droneLoop.wav" type="AudioStream" id=3]
+[ext_resource path="res://source/character/ai/drone/drone_idle_anim.tres" type="Animation" id=4]
+[ext_resource path="res://graphics/images/characters/drones.png" type="Texture" id=5]
+[ext_resource path="res://source/character/ai/drone/states/Die.gd" type="Script" id=6]
+[ext_resource path="res://source/character/ai/drone/states/Idle.gd" type="Script" id=7]
+[ext_resource path="res://addons/finite_state_machine/icons/state.png" type="Texture" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[node name="Drone" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+max_health = 40
+bullet_damage = 8
+
+[node name="Hover" type="AudioStreamPlayer" parent="." index="0"]
+stream = ExtResource( 3 )
+volume_db = -12.0
+bus = "Effects"
+
+[node name="Effects" type="AudioStreamPlayer" parent="." index="1"]
+bus = "Effects"
+
+[node name="AnimationPlayer" parent="Lower" index="0"]
+anims/hover = ExtResource( 4 )
+
+[node name="Sprite" parent="Lower" index="1"]
+texture = ExtResource( 5 )
+hframes = 6
+region_enabled = true
+region_rect = Rect2( 0, 0, 384, 64 )
+
+[node name="Upper" parent="." index="6"]
+visible = false
+
+[node name="Die" parent="FiniteStateMachine" index="0"]
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Die" index="0"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Idle" type="Node" parent="FiniteStateMachine" index="1"]
+script = ExtResource( 7 )
+__meta__ = {
+"_editor_icon": ExtResource( 8 )
+}
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Idle" index="0"]
+wait_time = 0.25
+one_shot = true
+
+[node name="FlipTimer" type="Timer" parent="FiniteStateMachine/Idle" index="1"]
+wait_time = 2.0
+one_shot = true
+
+[node name="CollisionShape2D" parent="." index="8"]
+position = Vector2( 0, -33 )
+shape = SubResource( 1 )
+
+[node name="Rays" type="Node2D" parent="." index="9"]
+position = Vector2( 0, -32 )
+
+[node name="Left" type="RayCast2D" parent="Rays" index="0"]
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 100 )
+collision_mask = 2
+
+[node name="Right" type="RayCast2D" parent="Rays" index="1"]
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 100 )
+collision_mask = 2
+
+[node name="Up" type="RayCast2D" parent="Rays" index="2"]
+rotation = -3.14159
+enabled = true
+cast_to = Vector2( 0, 100 )
+collision_mask = 2
+
+[node name="Down" type="RayCast2D" parent="Rays" index="3"]
+enabled = true
+cast_to = Vector2( 0, 100 )
+collision_mask = 2
+
+[node name="Barrel" type="Position2D" parent="." index="10"]
+
+[node name="CollisionShape2D" parent="HitArea" index="0"]
+disabled = true
+[connection signal="timeout" from="FiniteStateMachine/Die/Timer" to="FiniteStateMachine/Die" method="_on_Timer_timeout"]

@@ -1,0 +1,283 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://source/character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/character/ai/patrol/Patrol.gd" type="Script" id=2]
+[ext_resource path="res://graphics/images/characters/soldier_idle.png" type="Texture" id=3]
+[ext_resource path="res://graphics/images/characters/soldier_walk_shoot_full.png" type="Texture" id=4]
+[ext_resource path="res://source/character/ai/patrol/states/Die.gd" type="Script" id=5]
+[ext_resource path="res://source/character/ai/patrol/states/Idle.gd" type="Script" id=6]
+[ext_resource path="res://addons/finite_state_machine/icons/state.png" type="Texture" id=7]
+[ext_resource path="res://source/character/ai/patrol/states/Walk.gd" type="Script" id=8]
+[ext_resource path="res://source/character/ai/patrol/states/Seek.gd" type="Script" id=9]
+[ext_resource path="res://source/character/ai/patrol/states/Shoot.gd" type="Script" id=10]
+[ext_resource path="res://source/character/ai/patrol/states/Retreat.gd" type="Script" id=11]
+[ext_resource path="res://source/character/ai/patrol/GroundRays.gd" type="Script" id=12]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "shoot"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+}, {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 9, 24 )
+
+[node name="Patrol" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+team_number = 1
+max_health = 140
+vision = 400
+bullet_speed = 600
+bullet_damage = 8
+
+[node name="ShootTimer" type="Timer" parent="." index="0"]
+wait_time = 3.0
+one_shot = true
+
+[node name="AnimationPlayer" parent="Lower" index="0"]
+anims/idle = SubResource( 1 )
+anims/shoot = SubResource( 2 )
+anims/walk = SubResource( 3 )
+
+[node name="Sprite" parent="Lower" index="1"]
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 6
+frame = 7
+
+[node name="Upper" parent="." index="5"]
+visible = false
+
+[node name="Die" parent="FiniteStateMachine" index="0"]
+script = ExtResource( 5 )
+
+[node name="Idle" type="Node" parent="FiniteStateMachine" index="1"]
+script = ExtResource( 6 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+
+[node name="IdleTimer" type="Timer" parent="FiniteStateMachine/Idle" index="0"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Walk" type="Node" parent="FiniteStateMachine" index="2"]
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+speed = 160
+radius = 100
+
+[node name="Seek" type="Node" parent="FiniteStateMachine" index="3"]
+script = ExtResource( 9 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+speed = 220
+
+[node name="Attack" type="Node" parent="FiniteStateMachine" index="4"]
+script = ExtResource( 10 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+
+[node name="Timer" type="Timer" parent="FiniteStateMachine/Attack" index="0"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Retreat" type="Node" parent="FiniteStateMachine" index="5"]
+script = ExtResource( 11 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+
+[node name="CollisionShape2D" parent="." index="7"]
+shape = SubResource( 4 )
+
+[node name="Barrel" type="Position2D" parent="." index="8"]
+position = Vector2( 13, -29 )
+
+[node name="GroundRays" type="Node2D" parent="." index="10"]
+script = ExtResource( 12 )
+
+[node name="Left" type="RayCast2D" parent="GroundRays" index="0"]
+position = Vector2( -15, -26 )
+enabled = true
+cast_to = Vector2( 0, 30 )
+collision_mask = 2
+
+[node name="Right" type="RayCast2D" parent="GroundRays" index="1"]
+position = Vector2( 14, -26 )
+enabled = true
+cast_to = Vector2( 0, 30 )
+collision_mask = 2

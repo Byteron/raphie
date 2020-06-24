@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://source/level/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/checkpoint/Checkpoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://source/objects/Rock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/character/ai/dummy/Dummy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://source/character/ai/turret/Turret.tscn" type="PackedScene" id=5]
+
+[node name="TestRoom" index="0" instance=ExtResource( 1 )]
+id = 0
+
+[node name="ColorRect" parent="InfiniteBlackness/ParallaxLayer" index="0"]
+visible = false
+
+[node name="Terrain" parent="." index="2"]
+tile_data = PoolIntArray( 851965, 11, 0, 851966, 11, 0, 851967, 11, 0, 786432, 11, 0, 786433, 11, 0, 786434, 11, 0, 786435, 11, 0, 786436, 11, 0, 786437, 11, 0, 786438, 11, 0, 786439, 11, 0, 786440, 11, 0, 786441, 11, 0, 786442, 11, 0, 786443, 11, 0, 786444, 11, 0, 786445, 11, 0, 786446, 11, 0, 786447, 11, 0, 786448, 11, 0, 786449, 11, 0, 786450, 11, 0, 786451, 11, 0, 786452, 11, 0, 786453, 11, 0, 786454, 11, 0, 786455, 11, 0, 786456, 11, 0, 786457, 11, 0, 786458, 11, 0, 786459, 11, 0, 786460, 3, 0, 851968, 3, 0, 851969, 3, 0, 851970, 3, 0, 851971, 3, 0, 851972, 3, 0, 851973, 3, 0, 851974, 3, 0, 851975, 3, 0, 851976, 3, 0, 851977, 3, 0, 851978, 3, 0, 851979, 3, 0, 851980, 3, 0, 851981, 3, 0, 851982, 3, 0, 851983, 3, 0, 851984, 3, 0, 851985, 3, 0, 851986, 3, 0, 851987, 3, 0, 851988, 3, 0, 851989, 3, 0, 851990, 3, 0, 851991, 3, 0, 851992, 3, 0, 851993, 3, 0, 851994, 3, 0, 851995, 3, 0, 851996, 3, 0, 917504, 3, 0, 917505, 3, 0, 917506, 3, 0, 917507, 3, 0, 917508, 3, 0, 917509, 3, 0, 917510, 3, 0, 917511, 3, 0, 917512, 3, 0, 917513, 3, 0, 917514, 3, 0, 917515, 3, 0, 917516, 3, 0, 917517, 3, 0, 917518, 3, 0, 917519, 3, 0, 917520, 3, 0, 917521, 3, 0, 917522, 3, 0, 917523, 3, 0, 917524, 3, 0, 917525, 3, 0, 917526, 3, 0, 917527, 3, 0, 917528, 3, 0, 917529, 3, 0, 917530, 3, 0, 917531, 3, 0, 917532, 3, 0 )
+
+[node name="Portal" parent="." index="3"]
+position = Vector2( 854, 309 )
+
+[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource( 2 )]
+position = Vector2( 517, 384 )
+
+[node name="Rock" parent="Objects" index="0" instance=ExtResource( 3 )]
+position = Vector2( 612, 186 )
+
+[node name="Dummy" parent="Civilians" index="0" instance=ExtResource( 4 )]
+position = Vector2( 356, 386 )
+team_number = 1
+max_health = 6
+
+[node name="Turret" parent="Civilians" index="1" instance=ExtResource( 5 )]
+position = Vector2( 288, 384 )
+max_shots = 1
+bullet_damage = 20
+
+[node name="Player" parent="Characters" index="0"]
+position = Vector2( 25, 379 )
+max_health = 100

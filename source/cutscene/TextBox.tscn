@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://graphics/themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://source/cutscene/TextBox.gd" type="Script" id=2]
+
+[node name="TextBox" type="Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -360.0
+margin_bottom = -291.0
+rect_min_size = Vector2( 0, 60 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="MarginContainer1" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_top = -32.0
+margin_right = -497.0
+margin_bottom = 4.0
+rect_min_size = Vector2( 0, 24 )
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer1"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 140.0
+margin_bottom = 33.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer1/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="MarginContainer1/Panel/MarginContainer"]
+margin_left = 3.0
+margin_top = 5.0
+margin_right = 134.0
+margin_bottom = 25.0
+align = 1
+valign = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 3
+custom_constants/margin_top = 3
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer2"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 637.0
+margin_bottom = 66.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 22
+custom_constants/margin_top = 5
+custom_constants/margin_left = 22
+custom_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer2/Panel/MarginContainer"]
+margin_left = 22.0
+margin_top = 5.0
+margin_right = 612.0
+margin_bottom = 58.0

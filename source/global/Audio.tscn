@@ -1,0 +1,230 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://source/global/Audio.gd" type="Script" id=1]
+[ext_resource path="res://addons/audio_booth/source/music/MusicBooth.gd" type="Script" id=2]
+[ext_resource path="res://addons/audio_booth/graphics/icons/icon.png" type="Texture" id=3]
+[ext_resource path="res://addons/audio_booth/source/music/Song.gd" type="Script" id=4]
+[ext_resource path="res://audio/music/combatLoop.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/music/menuLoop.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/music/level1BaseLoop.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/music/level1Layer1Loop.wav" type="AudioStream" id=8]
+[ext_resource path="res://audio/music/level1Layer2Loop.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/ambience/pad1.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/ambience/pad2.wav" type="AudioStream" id=11]
+[ext_resource path="res://audio/ambience/pad3.wav" type="AudioStream" id=12]
+[ext_resource path="res://audio/sfx/playerDamaged.wav" type="AudioStream" id=13]
+[ext_resource path="res://audio/sfx/jump.wav" type="AudioStream" id=14]
+[ext_resource path="res://audio/sfx/land.wav" type="AudioStream" id=15]
+[ext_resource path="res://audio/sfx/playerFS.wav" type="AudioStream" id=16]
+[ext_resource path="res://audio/sfx/swordSwing.wav" type="AudioStream" id=17]
+[ext_resource path="res://audio/sfx/blink2.wav" type="AudioStream" id=18]
+[ext_resource path="res://audio/sfx/endBlink.wav" type="AudioStream" id=19]
+[ext_resource path="res://audio/sfx/slowMoStart.wav" type="AudioStream" id=20]
+[ext_resource path="res://audio/sfx/slowMoEnd.wav" type="AudioStream" id=21]
+[ext_resource path="res://audio/sfx/btnHover.wav" type="AudioStream" id=22]
+[ext_resource path="res://audio/sfx/btnPress.wav" type="AudioStream" id=23]
+[ext_resource path="res://audio/sfx/ramPlayer.wav" type="AudioStream" id=24]
+[ext_resource path="res://audio/sfx/ramWall.wav" type="AudioStream" id=25]
+[ext_resource path="res://audio/sfx/openMenu.wav" type="AudioStream" id=26]
+[ext_resource path="res://audio/sfx/closeMenu.wav" type="AudioStream" id=27]
+[ext_resource path="res://audio/sfx/playerGunshot.wav" type="AudioStream" id=28]
+[ext_resource path="res://audio/sfx/glitch.wav" type="AudioStream" id=29]
+[ext_resource path="res://audio/sfx/type.wav" type="AudioStream" id=30]
+[ext_resource path="res://audio/sfx/checkpointReached.wav" type="AudioStream" id=31]
+[ext_resource path="res://audio/sfx/tick1.wav" type="AudioStream" id=32]
+[ext_resource path="res://audio/sfx/tick2.wav" type="AudioStream" id=33]
+[ext_resource path="res://audio/sfx/tick3.wav" type="AudioStream" id=34]
+[ext_resource path="res://audio/sfx/tick4.wav" type="AudioStream" id=35]
+
+[node name="Audio" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+music_volume = 0.4
+
+[node name="MusicBooth" type="Node" parent="."]
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+
+[node name="GameLoop" type="Node" parent="MusicBooth"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+tempo = 120.0
+beats = 4
+
+[node name="Core" type="AudioStreamPlayer" parent="MusicBooth/GameLoop"]
+stream = ExtResource( 5 )
+bus = "Music"
+
+[node name="MenuLoop" type="Node" parent="MusicBooth"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+tempo = 120.0
+beats = 4
+
+[node name="Core" type="AudioStreamPlayer" parent="MusicBooth/MenuLoop"]
+stream = ExtResource( 6 )
+bus = "Music"
+
+[node name="Level1" type="Node" parent="MusicBooth"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+tempo = 155.0
+beats = 4
+
+[node name="Core" type="AudioStreamPlayer" parent="MusicBooth/Level1"]
+stream = ExtResource( 7 )
+bus = "Music"
+
+[node name="Layer1" type="AudioStreamPlayer" parent="MusicBooth/Level1"]
+stream = ExtResource( 8 )
+bus = "Music"
+
+[node name="Layer2" type="AudioStreamPlayer" parent="MusicBooth/Level1"]
+stream = ExtResource( 9 )
+bus = "Music"
+
+[node name="Ambience" type="Node" parent="."]
+
+[node name="Ambience1" type="AudioStreamPlayer" parent="Ambience"]
+stream = ExtResource( 10 )
+volume_db = -12.0
+
+[node name="Ambience2" type="AudioStreamPlayer" parent="Ambience"]
+stream = ExtResource( 11 )
+volume_db = -12.0
+
+[node name="Ambience3" type="AudioStreamPlayer" parent="Ambience"]
+stream = ExtResource( 12 )
+volume_db = -12.0
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Player" type="Node" parent="SFX"]
+editor/display_folded = true
+
+[node name="Hurt" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 13 )
+bus = "Effects"
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 14 )
+bus = "Effects"
+
+[node name="Land" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 15 )
+pitch_scale = 1.3
+bus = "Effects"
+
+[node name="Stop" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 15 )
+volume_db = -6.0
+pitch_scale = 1.6
+bus = "Effects"
+
+[node name="Step" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 16 )
+volume_db = -14.0
+bus = "Effects"
+
+[node name="Slash" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 17 )
+pitch_scale = 1.5
+bus = "Effects"
+
+[node name="BlinkStart" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 18 )
+bus = "Effects"
+
+[node name="BlinkEnd" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 19 )
+bus = "Effects"
+
+[node name="SlowMotionStart" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 20 )
+bus = "Effects"
+
+[node name="SlowMotionEnd" type="AudioStreamPlayer" parent="SFX/Player"]
+stream = ExtResource( 21 )
+bus = "Effects"
+
+[node name="Button" type="Node" parent="SFX"]
+editor/display_folded = true
+
+[node name="Hover" type="AudioStreamPlayer" parent="SFX/Button"]
+stream = ExtResource( 22 )
+volume_db = -8.0
+bus = "Effects"
+
+[node name="Pressed" type="AudioStreamPlayer" parent="SFX/Button"]
+stream = ExtResource( 23 )
+volume_db = -2.0
+bus = "Effects"
+
+[node name="Alien" type="Node" parent="SFX"]
+
+[node name="RamPlayer" type="AudioStreamPlayer" parent="SFX/Alien"]
+stream = ExtResource( 24 )
+bus = "Effects"
+
+[node name="RamWall" type="AudioStreamPlayer" parent="SFX/Alien"]
+stream = ExtResource( 25 )
+bus = "Effects"
+
+[node name="Menu" type="Node" parent="SFX"]
+editor/display_folded = true
+
+[node name="Open" type="AudioStreamPlayer" parent="SFX/Menu"]
+stream = ExtResource( 26 )
+bus = "Effects"
+
+[node name="Close" type="AudioStreamPlayer" parent="SFX/Menu"]
+stream = ExtResource( 27 )
+bus = "Effects"
+
+[node name="GunShot" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 28 )
+volume_db = -6.0
+bus = "Effects"
+
+[node name="Glitch" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 29 )
+volume_db = -24.0
+bus = "Effects"
+
+[node name="Type" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 30 )
+volume_db = -6.0
+bus = "Effects"
+
+[node name="Checkpoint" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 31 )
+bus = "Effects"
+
+[node name="Tick1" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 32 )
+pitch_scale = 1.5
+bus = "Effects"
+
+[node name="Tick2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 33 )
+pitch_scale = 1.5
+bus = "Effects"
+
+[node name="Tick3" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 34 )
+pitch_scale = 1.5
+bus = "Effects"
+
+[node name="Tick4" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 35 )
+pitch_scale = 1.5
+bus = "Effects"
+[connection signal="bar" from="MusicBooth" to="." method="_on_MusicBooth_bar"]

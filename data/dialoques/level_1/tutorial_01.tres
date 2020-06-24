@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://source/resources/RSpeech.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+speaker = "Scientist"
+lines = [ "Ah, the new model...", "We'll need to test your combat skills.", "Please destroy all the targets." ]
